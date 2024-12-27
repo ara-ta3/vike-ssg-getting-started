@@ -13,11 +13,15 @@ async function onRenderHtml(pageContext) {
       </>,
     ),
   );
+  const title = pageContext.config.title || "default title";
+  const description = pageContext.config.description || "default description";
 
   return escapeInject`<!DOCTYPE html>
     <html>
-      <body>
-        <div id="page-view">${viewHtml}</div>
-      </body>
+        <title>${title}</title>
+        <meta name="description" content="${description}">
+        <body>
+            <div id="page-view">${viewHtml}</div>
+        </body>
     </html>`;
 }
